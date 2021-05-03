@@ -73,4 +73,13 @@
             unset($_SESSION['key']);
             
         }
+
+        /* Permet de vérifier si l'utilisateur est connecté*/
+        public static function isLogged(){
+            return isset($_SESSION["user"]);
+        }
+
+        public static function isAdmin(){
+            self::isLogged() ? (self::get("user")->getRole() == "ROLE_ADMIN" ? true : false) : false;
+        }
     }

@@ -63,7 +63,7 @@ use App\Core\AbstractEntity as AE;
          */ 
         public function getCreatedAt()
         {
-                return $this->createdAt;
+                return $this->createdAt->format("d-m-y à H:i:s");
         }
 
         /**
@@ -73,7 +73,7 @@ use App\Core\AbstractEntity as AE;
          */ 
         public function setCreatedAt($createdAt)
         {
-                $this->createdAt = $createdAt;
+                $this->createdAt = new \DateTime($createdAt);
 
                 return $this;
         }
@@ -83,7 +83,7 @@ use App\Core\AbstractEntity as AE;
          */ 
         public function getModifiedAt()
         {
-                return $this->modifiedAt;
+                return $this->modifiedAt->format("d-m-y à H:i:s");
         }
 
         /**
@@ -93,7 +93,7 @@ use App\Core\AbstractEntity as AE;
          */ 
         public function setModifiedAt($modifiedAt)
         {
-                $this->modifiedAt = $modifiedAt;
+                $this->modifiedAt = new \DateTime($modifiedAt);
 
                 return $this;
         }

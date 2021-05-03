@@ -72,7 +72,7 @@ Class Topic extends AE{
      */ 
     public function setCreatedAt($createdAt)
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = $createdAt->format("d-m-y à H:i:s");
 
         return $this;
     }

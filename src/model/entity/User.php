@@ -105,7 +105,7 @@ Class User extends AE {
      */ 
     public function getBirthDate()
     {
-        return $this->birthDate;
+        return $this->birthDate->format("d-m-Y à H:i");
     }
 
     /**
@@ -115,7 +115,7 @@ Class User extends AE {
      */ 
     public function setBirthDate($birthDate)
     {
-        $this->birthDate = $birthDate;
+        $this->birthDate = new \DateTime($birthDate);
 
         return $this;
     }
