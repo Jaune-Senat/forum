@@ -13,14 +13,14 @@ class TopicManager extends AM implements ManagerInterface
         public function getAll(){
             return $this->getResults(
                 "App\Model\Entity\Topic",
-                "SELECT * FROM topic t, message m WHERE t.id = m.topic_id ORDER BY modifiedAt DESC "
+                "SELECT * FROM topic ORDER BY createdAt DESC "
             );
         }
     
         public function getOneById($id){
             return $this->getResults(
                 "App\Model\Entity\Topic",
-                "SELECT * FROM topic t, message m WHERE id = :num AND t.id = m.topic_id ORDER BY createdAt ASC" ,
+                "SELECT * FROM topic t, message m WHERE id = :num AND t.id = m.topic_id ORDER BY t.createdAt ASC" ,
                 [
                     "num" =>$id
                 ]

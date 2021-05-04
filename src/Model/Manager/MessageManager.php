@@ -11,7 +11,11 @@ class MessageManager extends AM implements ManagerInterface
         }
     
         public function getAll(){
-            return;
+            return $this->getResults(
+                "App\Model\Entity\Message",
+                "SELECT * FROM message m, topic t
+                WHERE m.topic_id = t.id"
+            );
         }
 
         public function getOneById($id)
@@ -22,6 +26,6 @@ class MessageManager extends AM implements ManagerInterface
                 [
                     "num" => $id
                 ]
-            )
+            );
         }
     }

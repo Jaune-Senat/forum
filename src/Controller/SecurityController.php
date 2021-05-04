@@ -17,7 +17,7 @@
          */
         public function login(){
             if(isset($_POST["submit"])){
-                $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+                $email = filter_input(INPUT_POST, "email" , FILTER_VALIDATE_EMAIL);
                 $password = filter_input(INPUT_POST, "password", FILTER_VALIDATE_REGEXP, [
                     "options" => [
                         "regexp" => "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/"
@@ -52,6 +52,7 @@
 
         public function register(){
             if(isset($_POST["submit"])){
+                $pseudo = filter_input(INPUT_POST, "pseudo" , FILTER_DEFAULT);
                 $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
                 $password = filter_input(INPUT_POST, "password", FILTER_VALIDATE_REGEXP, [
                     "options" => [
@@ -60,14 +61,20 @@
                     ]
                 ]);
                 $password_repeat = filter_input(INPUT_POST, "password_repeat", FILTER_DEFAULT);
+                $birthDate = filter_input(INPUT_POST, "birthDate", FILTER_VALIDATE_REGEXP,
+                [
+                    "options" => [
+                        "regexp" => "/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/"
+                    ]
+                ]);
                 
-                if($email && $password){
+                if($email && $password && $pseudo && $birthDate){
                     if(!$this->manager->getUserByEmail($email)){
                         if($password === $password_repeat){
 
                             $hash = password_hash($password, PASSWORD_ARGON2I);
 
-                            if($this->manager->insertUser($email, $hash)){
+                            if($this->manager->insertUser($pseudo, $email, $hash, $birthDate)){
                                 Session::addFlash('success', "Inscription réussie, connectez-vous !");
                                 
                                 return $this->redirectToRoute("security", "login");
@@ -92,6 +99,6 @@
                 return $this->render("user/profile.php");
             }
             Session::addFlash('error', 'Access denied !');
-            return $this->redirectToRoute("store");
+            return $this->redirectToRoute("home");
         }
     }

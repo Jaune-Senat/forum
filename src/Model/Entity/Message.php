@@ -17,7 +17,6 @@ use App\Core\AbstractEntity as AE;
             parent::hydrate($data, $this);
         }
 
-
         /**
          * Get the value of id
          */ 

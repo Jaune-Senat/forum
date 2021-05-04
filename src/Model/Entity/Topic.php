@@ -9,7 +9,7 @@ Class Topic extends AE{
     private $title;
     private $createdAt;
     private $isAvailable;
-    private $user_id;
+    private $user;
 
     public function __construct($data)
     {
@@ -62,7 +62,7 @@ Class Topic extends AE{
      */ 
     public function getCreatedAt()
     {
-        return $this->createdAt;
+        return $this->createdAt->format("d-m-y à H:i:s");
     }
 
     /**
@@ -72,7 +72,7 @@ Class Topic extends AE{
      */ 
     public function setCreatedAt($createdAt)
     {
-        $this->createdAt = $createdAt->format("d-m-y à H:i:s");
+        $this->createdAt = new \DateTime($createdAt);
 
         return $this;
     }
@@ -98,21 +98,21 @@ Class Topic extends AE{
     }
 
     /**
-     * Get the value of user_id
+     * Get the value of user
      */ 
-    public function getUser_id()
+    public function getUser()
     {
-        return $this->user_id;
+        return $this->user;
     }
 
     /**
-     * Set the value of user_id
+     * Set the value of user
      *
      * @return  self
      */ 
-    public function setUser_id($user_id)
+    public function setUser($user)
     {
-        $this->user_id = $user_id;
+        $this->user = $user;
 
         return $this;
     }

@@ -12,11 +12,12 @@
 
         public function index()
         {
-            
+            $topics = $this->manager->getAll();
+    
+
             return $this->render("home/home.php", [
-                "controller_name" => get_class($this),
-                "title"           => "Home"
+                "title"           => "Home",
+                "topics"          => $topics
             ]);
         }
-
     }

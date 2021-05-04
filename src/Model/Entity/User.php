@@ -3,11 +3,10 @@ namespace App\Model\Entity;
 use App\Core\AbstractEntity as AE;
 
 
-Class User extends AE {
+class User extends AE {
 
     private $id;
     private $pseudo;
-    private $password;
     private $email;
     private $birthDate;
     private $role;
@@ -56,26 +55,6 @@ Class User extends AE {
     public function setPseudo($pseudo)
     {
         $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of password
-     */ 
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set the value of password
-     *
-     * @return  self
-     */ 
-    public function setPassword($password)
-    {
-        $this->password = $password;
 
         return $this;
     }
