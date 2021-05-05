@@ -1,5 +1,6 @@
 <?php
     $topics = $data['topics'];
+    use App\Core\Session;
 ?>
 
 <h1>Liste des sujets</h1>
@@ -24,4 +25,6 @@
                 <?php }?>      
         </tbody>
     </table>
+    <?php if (Session::get("user") && $topic->getUser()->getIsBanned() == 0) {?>
+        <a href="http:?ctrl=topic&action=makeTopic"> Ouvrir un nouveau sujet</a> <?php } ?>
 </main>

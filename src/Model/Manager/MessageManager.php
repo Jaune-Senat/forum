@@ -13,8 +13,7 @@ class MessageManager extends AM implements ManagerInterface
         public function getAll(){
             return $this->getResults(
                 "App\Model\Entity\Message",
-                "SELECT * FROM message m, topic t
-                WHERE m.topic_id = t.id"
+                "SELECT * FROM message"
             );
         }
 
@@ -25,6 +24,15 @@ class MessageManager extends AM implements ManagerInterface
                 "SELECT * FROM message WHERE id = :num",
                 [
                     "num" => $id
+                ]
+            );
+        }
+        public function getAllByTopic($topicId){
+            return $this->getResults(
+                "App\Model\Entity\Message",
+                "SELECT * FROM message WHERE topic_id = :num",
+                [
+                    "num" => $topicId
                 ]
             );
         }

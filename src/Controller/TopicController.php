@@ -12,14 +12,10 @@ namespace App\Controller;
             $this->mmanager = new MessageManager;
         }
 
-        public function getAll(){
-            return $this->render("topic/view.php");
-        }
-
         public function voirTopic($id){
 
             $topic = $this->tmanager->getOneById($id);
-            $messages = $this->mmanager->getAll();
+            $messages = $this->mmanager->getAllByTopic($id);
 
             return $this->render("topic/view.php", [
                 "topic"          => $topic,

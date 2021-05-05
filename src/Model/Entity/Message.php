@@ -9,8 +9,8 @@ use App\Core\AbstractEntity as AE;
         private $text;
         private $createdAt;
         private $modifiedAt;
-        private $user_id;
-        private $topic_id;
+        private $user;
+        private $topic;
 
         public function __construct($data)
         {
@@ -98,41 +98,41 @@ use App\Core\AbstractEntity as AE;
         }
 
         /**
-         * Get the value of user_id
+         * Get the value of user
          */ 
-        public function getUser_id()
+        public function getUser()
         {
-                return $this->user_id;
+                return $this->user;
         }
 
         /**
-         * Set the value of user_id
+         * Set the value of user
          *
          * @return  self
          */ 
-        public function setUser_id($user_id)
+        public function setUser($user)
         {
-                $this->user_id = $user_id;
+                $this->user = $user;
 
                 return $this;
         }
 
         /**
-         * Get the value of topic_id
+         * Get the value of topic
          */ 
-        public function getTopic_id()
+        public function getTopic()
         {
-                return $this->topic_id;
+                return $this->topic;
         }
 
         /**
-         * Set the value of topic_id
+         * Set the value of topic
          *
          * @return  self
          */ 
-        public function setTopic_id($topic_id)
+        public function setTopic($topic)
         {
-                $this->topic_id = $topic_id;
+                $this->topic = $topic;
 
                 return $this;
         }

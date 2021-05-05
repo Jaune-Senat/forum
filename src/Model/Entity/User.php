@@ -8,6 +8,7 @@ class User extends AE {
     private $id;
     private $pseudo;
     private $email;
+    private $avatar;
     private $birthDate;
     private $role;
     private $isBanned;
@@ -78,7 +79,31 @@ class User extends AE {
 
         return $this;
     }
-
+    
+        /**
+         * Get the value of avatar
+         */ 
+        public function getAvatar()
+        {
+            if(!$this->avatar == null){
+                return "<img src='".IMG_PATH."/".$this->avatar.">";
+            }
+            else return $this->avatar = "http://place-hold.it/200x200";
+            
+        }
+    
+        /**
+         * Set the value of avatar
+         *
+         * @return  self
+         */ 
+        public function setAvatar($avatar)
+        {
+            $this->avatar = $avatar;
+    
+            return $this;
+        }
+    
     /**
      * Get the value of birthDate
      */ 
@@ -119,6 +144,10 @@ class User extends AE {
         return $this;
     }
 
+    public function hasRole($role){
+        return $this->role == $role;
+    }
+    
     /**
      * Get the value of isBanned
      */ 
