@@ -85,8 +85,8 @@ class User extends AE {
          */ 
         public function getAvatar()
         {
-            if(!$this->avatar == null){
-                return "<img src='".IMG_PATH."/".$this->avatar.">";
+            if($this->avatar != null){
+                return IMG_PATH."/".$this->avatar;
             }
             else return $this->avatar = "http://place-hold.it/200x200";
             

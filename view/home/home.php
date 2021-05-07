@@ -11,6 +11,7 @@
                 <th>TITRE</th>
                 <th>CREE LE</th>
                 <th>PAR</th>
+                <th>ETAT</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,7 @@
                         <td><a href="?ctrl=topic&action=voirTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitle()?></a></td>
                         <td><?= $topic->getCreatedAt() ?></td>
                         <td><?= $topic->getUser()->getPseudo()?> </td>
+                        <td><?= $topic->getIsAvailable() ? "ouvert <i class='fas fa-lock-open'></i>" : "verrouillé <i class='fas fa-lock'></i>"?></td>
                     </tr>  
                 <?php }?>      
         </tbody>

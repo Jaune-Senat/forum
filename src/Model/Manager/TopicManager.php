@@ -10,10 +10,10 @@ class TopicManager extends AM implements ManagerInterface
             parent::connect();
         }
     
-        public function getAll(){
+        public function getAll($pagination = ""){
             return $this->getResults(
                 "App\Model\Entity\Topic",
-                "SELECT * FROM topic ORDER BY createdAt DESC "
+                "SELECT * FROM topic ORDER BY createdAt DESC ".$pagination
             );
         }
     
@@ -22,7 +22,29 @@ class TopicManager extends AM implements ManagerInterface
                 "App\Model\Entity\Topic",
                 "SELECT * FROM topic  WHERE id = :num",
                 [
-                    "num" =>$id
+                    ":num" =>$id
+                ]
+            );
+        }
+
+        public function lockTopic($id){
+            return $this->executeQuery(
+                "UPDATE topic
+                SET isAvailable = 0
+                WHERE id = :num",
+                [
+                    ":num" => $id
+                ]
+            );
+        }
+
+        public function unlockTopic($id){
+            return $this->executeQuery(
+                "UPDATE topic
+                SET isAvailable = 1
+                WHERE id = :num",
+                [
+                    ":num" => $id
                 ]
             );
         }

@@ -33,8 +33,7 @@ use App\Core\Session;
     </header>
     <?php include("messages.php"); ?>
     <main>
-        <?= $page //ici s'intègrera la page que le contrôleur aura renvoyé !!
-        ?>
+        <?= $page //ici s'intègrera la page que le contrôleur aura renvoyé !! ?>
     </main>
 </body>
 

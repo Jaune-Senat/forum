@@ -8,7 +8,6 @@ use App\Core\AbstractEntity as AE;
         private $id;
         private $text;
         private $createdAt;
-        private $modifiedAt;
         private $user;
         private $topic;
 
@@ -73,26 +72,6 @@ use App\Core\AbstractEntity as AE;
         public function setCreatedAt($createdAt)
         {
                 $this->createdAt = new \DateTime($createdAt);
-
-                return $this;
-        }
-
-        /**
-         * Get the value of modifiedAt
-         */ 
-        public function getModifiedAt()
-        {
-                return $this->modifiedAt->format("d-m-y à H:i:s");
-        }
-
-        /**
-         * Set the value of modifiedAt
-         *
-         * @return  self
-         */ 
-        public function setModifiedAt($modifiedAt)
-        {
-                $this->modifiedAt = new \DateTime($modifiedAt);
 
                 return $this;
         }

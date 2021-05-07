@@ -11,10 +11,10 @@ class MessageManager extends AM implements ManagerInterface
             parent::connect();
         }
     
-        public function getAll(){
+        public function getAll($pagination = ""){
             return $this->getResults(
                 "App\Model\Entity\Message",
-                "SELECT * FROM message"
+                "SELECT * FROM message" .$pagination
             );
         }
 
@@ -29,13 +29,22 @@ class MessageManager extends AM implements ManagerInterface
             );
         }
 
-        public function getAllByTopic($topicId){
+        public function countByTopic($id){
+            return $this->getOneValue(
+                "SELECT COUNT(id) FROM message  WHERE topic_id = :num",
+                [
+                    "num" =>$id
+                ]
+            );
+        }
+
+        public function getAllByTopic($topicId, $pagination = ""){
             return $this->getResults(
                 "App\Model\Entity\Message",
-                "SELECT * FROM message WHERE topic_id = :num",
+                "SELECT * FROM message WHERE topic_id = :num ".$pagination,
                 [
                     "num" => $topicId
-                ]
+                ] 
             );
         }
 

@@ -24,6 +24,6 @@
     </p>
     <p>
         <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
-        <input class="submit" type="submit" name="submit" value="S'INSCRIRE">
+        <input class="uk-button uk-button-primary" type="submit" name="submit" value="S'INSCRIRE">
     </p>
 </form>
