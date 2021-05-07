@@ -3,9 +3,8 @@
     use App\Core\Session;
 ?>
 
-<h1>Liste des sujets</h1>
+<h1 class="center-text">Liste des sujets</h1>
 
-<main id="topic-list">
     <table class="uk-table uk-table-striped">
         <thead>
             <tr>
@@ -27,4 +26,3 @@
     </table>
     <?php if (Session::get("user") && $topic->getUser()->getIsBanned() == 0) {?>
         <a href="http:?ctrl=topic&action=makeTopic"> Ouvrir un nouveau sujet</a> <?php } ?>
-</main>

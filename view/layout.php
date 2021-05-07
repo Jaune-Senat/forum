@@ -19,7 +19,7 @@ use App\Core\Session;
 
 <body>
     <header>
-        <nav>
+        <nav class="center-text">
             <a href="?ctrl=home">Accueil des sujets</a>
             <?php if (!Session::get("user")) { ?>
             <a href="?ctrl=security&action=login">Se connecter</a> <?php } ?>
@@ -30,13 +30,12 @@ use App\Core\Session;
             <?php if (Session::get("user")) {?>
             <a href="?ctrl=security&action=logout">Se déconnecter</a><?php } ?>
         </nav>
-        <h1>Bienvenu !</h1>
     </header>
     <?php include("messages.php"); ?>
-    <div>
+    <main>
         <?= $page //ici s'intègrera la page que le contrôleur aura renvoyé !!
         ?>
-    </div>
+    </main>
 </body>
 
 </html>

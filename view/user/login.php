@@ -1,7 +1,7 @@
-<h1>
+<h1 class="center-text">
     Connectez-vous !!
 </h1>
-<form action="?ctrl=security&action=login" method="post">
+<form class="uk-form-stacked" action="?ctrl=security&action=login" method="post">
     <p>
         <label for="mail">Votre email : </label><br>
         <input type="email" name="email" id="email" required>
@@ -12,6 +12,6 @@
     </p>
     <p>
         <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
-        <input type="submit" name="submit" value="CONNEXION">
+        <input class="submit"  type="submit" name="submit" value="CONNEXION">
     </p>
 </form>
